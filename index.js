@@ -44,19 +44,17 @@ app.post("/api/chat", async (req, res) => {
             }
         );
 
+        if (!response.ok) {
+            const errorData = await response.text();
 
-                    
-                } catch (error) {
-                    console.error(
-                        "Gagal parsing streaming data.",
-                        error
-                    );
-                }
-            }
+            console.error("OpenRouter Error:", errorData);
+
+            return res.status(response.status).json({
+                error: errorData
+            });
         }
 
-        res.write("data: [DONE]\n\n");
-        res.end();
+
     } catch (error) {
 
         console.error("Server Error:", error);
