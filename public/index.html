@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="chat-container">
+        <header class="chat-header">
+            <div class="header-info">
+                <div class="bot-avatar-header" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
+                        <circle cx="9" cy="13" r="1.25" fill="currentColor"/>
+                        <circle cx="15" cy="13" r="1.25" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1>Chatbot AI</h1>
+                    <div class="status-wrapper">
+                        <span class="status-dot"></span>
+                        <p>NVIDIA Nemotron 3.5 Super VL</p>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="reset-btn" class="reset-btn" title="Mulai percakapan baru" aria-label="Mulai percakapan baru">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                </svg>
+            </button>
+        </header>
+
+        <section id="chat-box" class="chat-box" aria-live="polite">
+            <div class="message-row bot">
+                <div class="avatar bot-avatar" aria-hidden="true">AI</div>
+                <div class="message-bubble">
+                    <div class="message-content">Halo! Ada yang bisa saya bantu hari ini?</div>
+                </div>
+            </div>
+
+            <div id="quick-prompts" class="quick-prompts">
+                <button type="button" class="prompt-chip" data-prompt="Jelaskan cara kerja Server-Sent Events secara singkat.">Cara kerja SSE</button>
+                <button type="button" class="prompt-chip" data-prompt="Berikan 3 ide proyek web sederhana menggunakan Express.js.">Ide proyek Express.js</button>
+                <button type="button" class="prompt-chip" data-prompt="Buatkan contoh fungsi async/await di JavaScript.">Contoh async/await</button>
+            </div>
+        </section>
+
+        <form id="chat-form" class="chat-input-area">
+            <div class="input-wrapper">
+                <textarea id="user-input" rows="1" placeholder="Ketik pesan Anda... (Enter untuk kirim, Shift+Enter baris baru)" required></textarea>
+                <button type="submit" id="send-btn" class="send-btn">
+                    <span>Kirim</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
