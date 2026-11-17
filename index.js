@@ -22,8 +22,41 @@ app.post("/api/chat", async (req, res) => {
                 error: "Message harus berupa Array"
             });
         }
-//
 
+        const response = await fetch(
+            "https://openrouter.ai/api/v1/chat/completions",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`
+                },
+
+                body: JSON.stringify({
+                    model: "inclusionai/ling-3.2-flash:free",
+                    messages,
+                    temperature: 0.7,
+                    max_tokens: 1000,
+                    stream: true
+                })
+
+            }
+        );
+
+
+                    
+                } catch (error) {
+                    console.error(
+                        "Gagal parsing streaming data.",
+                        error
+                    );
+                }
+            }
+        }
+
+        res.write("data: [DONE]\n\n");
+        res.end();
     } catch (error) {
 
         console.error("Server Error:", error);
